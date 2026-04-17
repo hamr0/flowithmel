@@ -575,6 +575,8 @@
       border-color: var(--sage);
     }
     .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select.placeholder { color: #9ca3a0; }
+    .form-group select option { color: var(--dark); }
     .form-submit {
       padding: 0.95rem 2.5rem;
       background: var(--terracotta);
@@ -938,18 +940,19 @@
       </div>
     </div>
   </div>
-  <div class="contact-form">
+  <form class="contact-form" action="https://formspree.io/f/melanie.bernstein@gmail.com" method="POST">
     <div class="form-group">
       <label>Your name</label>
-      <input type="text" placeholder="e.g. Sophie" />
+      <input type="text" name="name" placeholder="e.g. Sophie" required />
     </div>
     <div class="form-group">
       <label>Email address</label>
-      <input type="email" placeholder="you@email.com" />
+      <input type="email" name="email" placeholder="you@email.com" required />
     </div>
     <div class="form-group">
       <label>I'm interested in</label>
-      <select>
+      <select name="interest">
+        <option value="" disabled selected style="color: #9ca3a0;">e.g. private lessons</option>
         <option>A yoga workshop</option>
         <option>Private yoga session</option>
         <option>Reiki healing</option>
@@ -958,14 +961,19 @@
     </div>
     <div class="form-group">
       <label>Message</label>
-      <textarea placeholder="Tell me a little about yourself and what you're looking for…"></textarea>
+      <textarea name="message" placeholder="Tell me a little about yourself and what you're looking for…"></textarea>
     </div>
-    <button class="form-submit">Send Message</button>
-  </div>
+    <button type="submit" class="form-submit">Send Message</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
 <footer>
+<script>
+  const sel = document.querySelector('select[name="interest"]');
+  sel.classList.add('placeholder');
+  sel.addEventListener('change', () => sel.classList.remove('placeholder'));
+</script>
   <div class="footer-logo">Flow with Melanie</div>
   <div>© 2025 flowwithmelanie.com · Utrecht, Netherlands</div>
   <div class="footer-links">
