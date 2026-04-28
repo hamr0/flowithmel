@@ -19,7 +19,7 @@ Live site: https://flowwithmelanie.com
 ├── hero-jungle.jpg  # about section image
 ├── hero-yoga.jpg    # hero image
 ├── CNAME            # GitHub Pages custom domain
-└── LICENSE          # MIT
+└── LICENSE          # Apache-2.0
 ```
 
 ## Deploy
@@ -34,4 +34,4 @@ git push
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+Apache-2.0 — see [LICENSE](LICENSE).
