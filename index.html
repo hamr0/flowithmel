@@ -99,6 +99,7 @@
       font-style: italic;
       color: var(--sage-dark);
       letter-spacing: 0.02em;
+      text-decoration: none;
     }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
@@ -160,39 +161,6 @@
       opacity: 0;
       animation: fadeUp 0.8s 0.7s forwards;
     }
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.9s forwards;
-    }
-    .btn-primary {
-      display: inline-block;
-      padding: 0.85rem 2.2rem;
-      background: var(--sage-dark);
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-radius: 100px;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
-    .btn-outline {
-      display: inline-block;
-      padding: 0.85rem 2.2rem;
-      border: 1px solid var(--sage-dark);
-      color: var(--sage-dark);
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-radius: 100px;
-      transition: all 0.3s;
-    }
-    .btn-outline:hover { background: var(--sage-dark); color: #fff; transform: translateY(-2px); }
-
     .hero-right {
       position: relative;
       overflow: visible;
@@ -202,7 +170,6 @@
       background: transparent;
       padding: 0;
     }
-    .hero-right::before { display: none; }
 
     .hero-photos {
       position: relative;
@@ -253,9 +220,6 @@
       object-fit: cover;
       object-position: center 15%;
     }
-
-    /* Hide unused photo */
-    .hero-photo-2 { display: none; }
 
     .scroll-hint {
       position: absolute;
@@ -492,6 +456,13 @@
     .workshop-info p {
       font-size: 0.82rem;
       opacity: 0.65;
+      margin-bottom: 0.3rem;
+    }
+    .workshop-info p:last-child {
+      margin-bottom: 0;
+      opacity: 0.5;
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
     }
     .workshop-meta {
       text-align: right;
@@ -675,14 +646,6 @@
       0%, 100% { opacity: 0.4; transform: scaleY(1); }
       50% { opacity: 1; transform: scaleY(1.1); }
     }
-    @keyframes morphBlob {
-      0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%; }
-      33% { border-radius: 40% 60% 45% 55% / 55% 45% 55% 45%; }
-      66% { border-radius: 50% 50% 40% 60% / 50% 60% 40% 50%; }
-    }
-    @keyframes spin {
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
 
     /* BODYWORK FOR YOU */
     .bodywork { background: var(--warm-white); }
@@ -761,7 +724,6 @@
       .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 4.5rem; }
       .hero-left { padding: 2.5rem 1.5rem 2rem; text-align: center; align-items: center; }
       .hero-sub { max-width: 100%; }
-      .hero-ctas { justify-content: center; flex-wrap: wrap; }
 
       .hero-right { display: flex; min-height: 420px; overflow: hidden; }
       .hero-photos { height: 420px; }
@@ -779,8 +741,18 @@
       .offerings-intro { grid-template-columns: 1fr; gap: 1.2rem; }
       .cards { grid-template-columns: 1fr; }
 
-      .workshop-item { grid-template-columns: 70px 1fr; gap: 1rem; padding: 1.2rem 1rem; }
-      .workshop-meta { display: flex; flex-direction: column; align-items: flex-end; }
+      .workshop-item { grid-template-columns: 70px 1fr; gap: 0.6rem 1rem; padding: 1.2rem 1rem; }
+      .workshop-meta {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.6rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      .workshop-meta .btn-sm { margin-top: 0; }
 
       .testimonials-grid { grid-template-columns: 1fr; }
 
@@ -795,7 +767,6 @@
       .hero-photo-1 { width: 190px; height: 220px; top: 10px; left: 10px; }
       .hero-photo-3 { width: 190px; height: 220px; top: 130px; left: 120px; }
       .about-visual { height: 280px; }
-      .btn-primary, .btn-outline { padding: 0.75rem 1.5rem; font-size: 0.72rem; }
     }
   </style>
 </head>
@@ -803,11 +774,11 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"></div>
+  <a class="nav-logo" href="#home">Flow with Melanie</a>
   <ul class="nav-links">
-    <li><a href="#yoga">Yoga</a></li>
-    <li><a href="#breathwork">Breathwork</a></li>
-    <li><a href="#reiki">Reiki</a></li>
+    <li><a href="#offerings">Offerings</a></li>
+    <li><a href="#bodywork">Bodywork</a></li>
+    <li><a href="#workshops">Workshops</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -818,13 +789,10 @@
     <p class="hero-eyebrow">Yoga · Breathwork · Reiki</p>
     <h1 class="hero-title">Move. <em>Breathe.</em><br>Come home<br>to yourself.</h1>
     <p class="hero-sub">Melanie works with you to build a practice that fits your body and your life — helping you move well, recover well, and find more quiet in a busy mind.</p>
-    <div class="hero-ctas">
-    </div>
   </div>
   <div class="hero-right">
     <div class="hero-photos">
       <div class="hero-photo-1"><img src="hero-flower.jpg" alt="Melanie" /></div>
-      <div class="hero-photo-2"><img src="hero-flower.jpg" alt="Melanie" /></div>
       <div class="hero-photo-3"><img src="hero-yoga.jpg" alt="Melanie yoga" /></div>
     </div>
     </div>
@@ -905,7 +873,7 @@
       <div class="card-icon">🌿</div>
       <h3>Yoga Workshops</h3>
       <p>Immersive experiences exploring themes like yoga for anxiety and stress, self-massage using tennis balls and seasonal practices. Open to all levels.</p>
-      <div class="card-price">From €35 · Group setting</div>
+      <div class="card-price">From €25 · Group setting</div>
     </div>
     <div class="card">
       <div class="card-icon">🕊️</div>
@@ -929,15 +897,16 @@
   <div class="workshop-list">
     <div class="workshop-item">
       <div class="workshop-date">
-        <div class="day">16</div>
-        <div class="month">May 2026</div>
+        <div class="day">04</div>
+        <div class="month">Jul 2026</div>
       </div>
       <div class="workshop-info">
-        <h4>Myofascial Release &amp; Yin Yoga</h4>
-        <p>2 hrs · 14:00 · Yoga Point Oudegracht, Utrecht</p>
+        <h4>Myofascial Release &amp; Yin</h4>
+        <p>Slow, deeply restorative work with different types of balls, followed by long supported yin holds — back by popular request after a sold-out first round.</p>
+        <p>90 min · 14:00 · Yoga Point Oudegracht, Utrecht</p>
       </div>
       <div class="workshop-meta">
-        <div class="price">€35</div>
+        <div class="price">€25</div>
         <a href="https://yogapoint.nl/lesrooster/oudegracht-utrecht/" target="_blank" class="btn-sm">Reserve</a>
       </div>
     </div>
@@ -1023,13 +992,8 @@
 
 <!-- FOOTER -->
 <footer>
-<script>
-  const sel = document.querySelector('select[name="interest"]');
-  sel.classList.add('placeholder');
-  sel.addEventListener('change', () => sel.classList.remove('placeholder'));
-</script>
   <div class="footer-logo">Flow with Melanie</div>
-  <div>© 2025 flowwithmelanie.com · Utrecht, Netherlands</div>
+  <div>© 2026 flowwithmelanie.com · Utrecht, Netherlands</div>
   <div class="footer-links">
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -1037,6 +1001,12 @@
     <a href="#contact">Contact</a>
   </div>
 </footer>
+
+<script>
+  const sel = document.querySelector('select[name="interest"]');
+  sel.classList.add('placeholder');
+  sel.addEventListener('change', () => sel.classList.remove('placeholder'));
+</script>
 
 </body>
 </html>
